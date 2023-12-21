@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const UserItems = [
     { name: "Profile", link: "/profile" },
-    { name: "Dashboard", link: "/dashboard" },
+    { name: "Dashboard", link: "/dashboard/home" },
     { name: "Settings", link: "/settings" },
 ]
 
@@ -63,7 +63,7 @@ const handleLogout = () => {
             ))}
             {
               user ? <li>
-                <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                <NavLink to={'/dashboard/home'}>Dashboard</NavLink>
                 </li> : <li>
                   <NavLink to={'/register'}>Registration</NavLink>
                   </li>
@@ -81,7 +81,7 @@ const handleLogout = () => {
           ))}
           {
               user ? <li>
-                <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                <NavLink to={'/dashboard/home'}>Dashboard</NavLink>
                 </li> : <li>
                   <NavLink to={'/register'}>Registration</NavLink>
                   </li>

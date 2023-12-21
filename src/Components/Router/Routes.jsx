@@ -7,6 +7,7 @@ import Home from "../Layouts/Home/Home";
 import { LoginCard } from "../UserAuthentication/Login/Login";
 import { RegistrationCard } from "../UserAuthentication/Registration/Registration";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Dashboard from "../Layouts/Dashboard/Dashboard";
 
 
   const router = createBrowserRouter([
@@ -37,6 +38,20 @@ import ErrorPage from "../ErrorPage/ErrorPage";
         },
       ]
     },
+    {
+      path:"/dashboard",
+      element: <Dashboard></Dashboard>,
+      children:[
+        {
+          path: "home",
+          element: <Home></Home>
+        },
+        {
+          path: "task",
+          element: <h1>Tasks</h1>
+        }
+      ]
+    }
   ]);
 
 
