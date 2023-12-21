@@ -8,6 +8,7 @@ import { LoginCard } from "../UserAuthentication/Login/Login";
 import { RegistrationCard } from "../UserAuthentication/Registration/Registration";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
+import Tasks from "../Layouts/Dashboard/Tasks/Tasks";
 
 
   const router = createBrowserRouter([
@@ -48,7 +49,7 @@ import Dashboard from "../Layouts/Dashboard/Dashboard";
         },
         {
           path: "task",
-          element: <h1>Tasks</h1>
+          element: <Tasks></Tasks>
         }
       ]
     }

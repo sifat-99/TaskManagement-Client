@@ -13,7 +13,6 @@ const Dashboard = () => {
       <div className="drawer grid col-span-1 lg:col-span-2 lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex btn btn-ghost">
-          {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
             className=" p-4 btn text-3xl drawer-button lg:hidden"
@@ -27,7 +26,7 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-64 min-h-[100svh] bg-gray-200 text-black">
+          <ul className="menu  p-4 w-64 min-h-[100svh] bg-gray-200 text-black">
             <div className="drawer-content flex ">
               <label
                 htmlFor="my-drawer-2"
@@ -38,9 +37,10 @@ const Dashboard = () => {
             </div>
                 <div className="pt-4">
                     {
-                        user ? <div>
-                            <h1 className="text-3xl">Hi,{user.displayName}</h1>
-                            <p className="text-xl">Hare is your Dashboard</p>
+                        user ? <div className="flex items-center gap-2">
+                            <div > <img className="border btn btn-circle h-20 w-36" src={user.photoURL} alt="" /></div>
+                            <div><h1 className="text-2xl">Hi, {user.displayName}</h1>
+                            <p className="text-lg">Hare is your Dashboard</p></div>
                         </div> : <></>
                     }
                 </div>
@@ -50,6 +50,11 @@ const Dashboard = () => {
             <li>
             <NavLink to={'/dashboard/task'}>Task</NavLink>
             </li>
+            <div className="divider pt-40"></div>
+            <li className="pt-48 w-12 ">
+            <NavLink className=" text-center w- p-4 bg-blue-300 text-white hover:bg-green-400 hover:text-red-400 font-bold text-3xl" to={'/'}>Home</NavLink>
+            </li>
+
           </ul>
         </div>
       </div>
