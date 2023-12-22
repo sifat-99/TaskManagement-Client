@@ -49,7 +49,7 @@ const Dashboard = () => {
               <NavLink to={'/dashboard/createNewTask'}>ADD TASK</NavLink>
             </li>
             <li>
-            <NavLink to={'/dashboard/task'}>Task</NavLink>
+            <NavLink to={'/dashboard/tasks'}>Task</NavLink>
             </li>
             <div className="divider pt-40"></div>
             <li >
