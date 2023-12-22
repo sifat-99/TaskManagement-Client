@@ -1,20 +1,26 @@
 
-import { AddTask } from "./AddTask";
-import KanbanBoard from "./components/Kanbanboard";
+// import { AddTask } from "./AddTask";
+// import TaskManagement from "./TaskManagement/TaskManagement";
 
 
 
 
-const Tasks = () => {
-    return (
-       <div className="mt-16 flex" >
 
-       <div>
-       <KanbanBoard/>
-       </div>
-        <AddTask ></AddTask>
-       </div>
-    );
-};
+// const Tasks = () => {
 
-export default Tasks;
+
+
+
+
+//     return (
+//        <div className="mt-16 flex" >
+
+//        <div>
+//        <TaskManagement></TaskManagement>
+//        </div>
+//         <AddTask ></AddTask>
+//        </div>
+//     );
+// };
+
+// export default Tasks;

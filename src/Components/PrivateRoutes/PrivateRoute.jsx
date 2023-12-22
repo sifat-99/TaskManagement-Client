@@ -33,8 +33,8 @@ if(loading){
     
 };
 
+export default PrivateRoute;
+
 PrivateRoute.propTypes = {
     children: PropTypes.node.isRequired,
   };
-
-export default PrivateRoute;

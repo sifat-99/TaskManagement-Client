@@ -7,8 +7,12 @@ import {
   Input,
   Select,
   Option,
+  DialogFooter,
 } from "@material-tailwind/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import swal from "sweetalert";
 
 export function AddTask() {
   const [open, setOpen] = useState(false);
@@ -19,9 +23,13 @@ export function AddTask() {
   const [priority, setPriority] = useState("Low");
   const [status, setStatus] = useState("Incomplete");
 
+  const axiosPublic = useAxiosPublic();
+
+  const { user } = useContext(AuthContext);
+
   const handleOpen = () => setOpen(!open);
 
-
+  console.log(user?.uid);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -34,18 +42,28 @@ export function AddTask() {
       endDate,
       priority,
       status,
+      uid: user?.uid,
     };
 
     // Do something with the form data (e.g., send it to a server)
-    console.log('Form Data:', formData);
+    console.log("Form Data:", formData);
 
+    axiosPublic.post("/addTask", formData)
+      .then((res) => {
+        console.log(res);
+        swal({
+          title: "Good job!",
+          text: "Task added successfully!",
+          icon: "success",
+          button: " Okay!!!",
+        });
+        setOpen(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-
-
-
-
-
-
+    // Send the form data to the server
 
     // Close the modal
     setOpen(false);
@@ -58,11 +76,17 @@ export function AddTask() {
     setStatus("Incomplete");
   };
 
+  const handlePriorityChange = (e) => {
+    // Access the selected value here
+    const selectedPriority = e.target.value;
+    setPriority(selectedPriority);
+  };
 
-
-
-
-
+  const handleStatusChange = (e) => {
+    // Access the selected value here
+    const selectedPriority = e.target.value;
+    setStatus(selectedPriority);
+  };
 
   return (
     <>
@@ -75,10 +99,10 @@ export function AddTask() {
         <span className="text-white">Add-Task</span>
         <span className="text-xl text-white ml-2">+</span>
       </Button>
-      <Dialog open={open} handler={handleOpen}>
-        <DialogHeader>Long Dialog</DialogHeader>
+      <Dialog open={open}>
+        <DialogHeader>Add New Task</DialogHeader>
         <DialogBody className="h-[42rem] overflow-scroll">
-          <form onSubmit={handleFormSubmit}>
+          <form>
             <div className="mb-1 flex flex-col gap-6">
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Task Title
@@ -148,8 +172,8 @@ export function AddTask() {
               <div className="w-72">
                 <Select
                   label="Select Version"
+                  onChange={handlePriorityChange}
                   value={priority}
-                  onChange={(e) => setPriority(e.target.value)}
                 >
                   <Option>Low</Option>
                   <Option>Moderate</Option>
@@ -162,19 +186,33 @@ export function AddTask() {
               <div className="w-72">
                 <Select
                   label="Select Version "
+                  onChange={handleStatusChange}
                   value={status}
-                  onChange={(e) => setStatus(e.target.value)}
                 >
                   <Option>Incomplete</Option>
                   <Option>Ongoing</Option>
                 </Select>
               </div>
             </div>
-            <Button type="submit" variant="gradient" color="green" className="mt-12 ">
-            Add Task
-          </Button>
+            <Button
+              onClick={handleFormSubmit}
+              variant="gradient"
+              color="black"
+              className="mt-12 "
+            >
+              Add Task
+            </Button>
           </form>
         </DialogBody>
+        <DialogFooter>
+          <Button
+            onClick={handleOpen}
+            variant="gradient"
+            color="black"
+          >
+            Close
+          </Button>
+        </DialogFooter>
       </Dialog>
     </>
   );

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
+import { Button } from "@material-tailwind/react";
 
 const Dashboard = () => {
 
@@ -45,14 +46,16 @@ const Dashboard = () => {
                     }
                 </div>
             <li className="pt-4 lg:pt-16">
-              <NavLink to={'/dashboard/home'}>Home</NavLink>
+              <NavLink to={'/dashboard/createNewTask'}>ADD TASK</NavLink>
             </li>
             <li>
             <NavLink to={'/dashboard/task'}>Task</NavLink>
             </li>
             <div className="divider pt-40"></div>
-            <li className="pt-48 w-12 ">
-            <NavLink className=" text-center w- p-4 bg-blue-300 text-white hover:bg-green-400 hover:text-red-400 font-bold text-3xl" to={'/'}>Home</NavLink>
+            <li >
+            <NavLink  to={'/'}><Button  type="submit" variant="gradient" color="black" >
+            Home
+          </Button></NavLink>
             </li>
 
           </ul>

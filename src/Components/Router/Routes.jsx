@@ -8,7 +8,13 @@ import { LoginCard } from "../UserAuthentication/Login/Login";
 import { RegistrationCard } from "../UserAuthentication/Registration/Registration";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
-import Tasks from "../Layouts/Dashboard/Tasks/Tasks";
+import TaskManagement from "../Layouts/Dashboard/Tasks/TaskManagement/TaskManagement";
+import CreateNewTask from "../Layouts/Dashboard/Tasks/CreateNewTask/CreateNewTask";
+import TaskManagementDetails from "../Layouts/Dashboard/Tasks/TaskManagement/TaskManagementDetails";
+import PrivateRoute from "../PrivateRoutes/PrivateRoute";
+import About from "../Layouts/Home/About/About";
+import ContactInfo from "../Layouts/Home/Contact/Contact";
+import Profile from "../Profile/Profile";
 
 
   const router = createBrowserRouter([
@@ -23,11 +29,15 @@ import Tasks from "../Layouts/Dashboard/Tasks/Tasks";
         },
         {
           path: "/about",
-          element: <div>About</div>,
+          element: <About></About>,
         },
         {
           path: "/contact",
-          element: <div>Contact</div>,
+          element: <ContactInfo></ContactInfo>,
+        },
+        {
+          path:"profile",
+          element:<Profile></Profile>
         },
         {
             path: "/login",
@@ -41,15 +51,19 @@ import Tasks from "../Layouts/Dashboard/Tasks/Tasks";
     },
     {
       path:"/dashboard",
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         {
-          path: "home",
-          element: <Home></Home>
+          path: "/dashboard/tasks",
+          element: <TaskManagement></TaskManagement>
         },
         {
-          path: "task",
-          element: <Tasks></Tasks>
+          path: "/dashboard/tasks/:id",
+          element: <TaskManagementDetails />,
+      },
+        {
+          path: '/dashboard/createNewTask',
+          element: <CreateNewTask></CreateNewTask>
         }
       ]
     }
