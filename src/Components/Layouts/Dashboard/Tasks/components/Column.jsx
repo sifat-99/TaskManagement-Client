@@ -9,13 +9,16 @@ import PropTypes from 'prop-types'
 const Container = styled.div`
   background-color: #f4f5f7;
   border-radius: 12px;
-  width: 480px;
+  width: 320px;
   height: 80vh;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
   border: 1px solid gray;
   margin-right: 20px;
+  @media (min-width: 1200px) {
+    width: 480px;
+  }
 `;
 
 const Title = styled.h3`

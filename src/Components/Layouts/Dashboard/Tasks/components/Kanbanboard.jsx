@@ -66,7 +66,7 @@ export default function KanbanBoard() {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <h2 className="text-4xl text-center mb-8">TODO DASHBOARD</h2>
+      <h2 className="text-2xl lg:text-4xl text-center mb-8">TODO DASHBOARD</h2>
       <div
         className="grid grid-cols-1 lg:grid-cols-2  items-center justify-center gap-8"
       >
